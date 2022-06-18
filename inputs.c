@@ -8,7 +8,7 @@ int column;
 };
 int checkalp(int,char []);//check if letter already printed from key
 void square(struct square* ,char* );//create the square
-void splits(struct square*);//create digraphs
+void splits(struct square*,char*);//create digraphs
 void pos(struct square*, char [2]);//gets the position of each letter in each digraph
 
 int main()
@@ -19,9 +19,9 @@ int main()
 	char input[100];
 	scanf("%s",key);
 	square(s1,key);
-	//printf("enter");
-	//scanf("%s",input);
-	splits(s1);
+	printf("enter");
+        scanf("%s",input);
+	splits(s1,input);
 	return 0;
 }
 int checkalp(int chr,char key[])
@@ -98,11 +98,9 @@ void square(struct square* s,char* key)
 	}
 
 }
-void splits(struct square*s)//,char inp[5])
+void splits(struct square*s,char input[5])
 {
         char digraph[3];
-        char input[100];
-        scanf("%s",input);
         int count=0;
         char temp[3];
 	//printf("%d",strlen(input));
@@ -120,7 +118,7 @@ void splits(struct square*s)//,char inp[5])
 				temp[1]='x';//bogus x for non unique pairs		
 				i--;
 			}
-                printf("%s\n",temp);
+                
               	pos(s,temp);
            	}
 		
@@ -128,7 +126,6 @@ void splits(struct square*s)//,char inp[5])
 	if(count==1)
 	{
 		temp[1]='z';
-		printf("%s\n",temp);
 		pos(s,temp);
 	}
 	
@@ -136,6 +133,7 @@ void splits(struct square*s)//,char inp[5])
 }
 void pos(struct square* s2 , char digraphs[2])
 {
+      printf("%c %c\n",digraphs[0],digraphs[1]);
       for(int i=0;i<25;i++) 
       {
            if(s2->c==digraphs[0] ||s2->c==digraphs[1])
