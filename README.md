@@ -1,2 +1,2 @@
-# project_sem2
+# Project_Sem2
 Playfair Cipher
