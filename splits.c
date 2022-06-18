@@ -7,6 +7,7 @@ int main()
         int count=0;
         char temp[3];
 	scanf("%[^\n]s",input);
+	printf("%d",strlen(input));
 	//char (*p)[2]=input;
 	printf("%s",temp);
 	for(int i=0;i<strlen(input);i++)
