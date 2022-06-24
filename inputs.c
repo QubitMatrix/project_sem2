@@ -7,19 +7,22 @@ int row;
 int column;
 };
 int checkalp(int,char []);//check if letter already printed from key
-void square(struct square* ,char* );//create the square
+void square(struct square* ,char* ,char);//create the square
 void splits(struct square*,char*);//create digraphs
 void pos(struct square*, char [2]);//gets the position of each letter in each digraph
 
 int main()
 {
 	struct square s1[27];
-	//struct square *s=s1;
 	char key[27];//key should be unique
 	char input[100];
+	char choice;
+	printf("Enter the key");
 	scanf("%s",key);
-	square(s1,key);
-	printf("enter");
+	printf("Type 'y' to print the square, anything else to continue without displaying\n");
+	scanf("\n%c",&choice);
+	square(s1,key,choice);
+	printf("Enter text to be encrypted");
         scanf("%s",input);
 	splits(s1,input);
 	return 0;
@@ -33,7 +36,7 @@ int checkalp(int chr,char key[])
 	}
 	return 0;
 }
-void square(struct square* s,char* key)
+void square(struct square* s,char* key,char choice)
 {
         
 	int count=0;
@@ -87,29 +90,29 @@ void square(struct square* s,char* key)
 		
 	}
 	//print the square in matrix format
-	for(int i=0;i<5;i++)
+	if(choice=='y' || choice=='Y')
 	{
+	for(int i=0;i<5;i++)
+	    {
 		for(int j=0;j<5;j++)
 		{
 			printf("%c ",arr[i][j]);
 
 		}
-		printf("\n");
-	}
-
+	     printf("\n");
+            }
+       }
 }
 void splits(struct square*s,char input[5])
 {
         char digraph[3];
         int count=0;
         char temp[3];
-	//printf("%d",strlen(input));
 	for(int i=0;i<strlen(input);i++)
 	{
 		
 		temp[count]=input[i];
 		count++;
-		//printf("*%c ",temp[count-1]);
 		if(count==2)
 		{
 			count=0;
