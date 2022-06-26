@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include<stdio_ext.h>
 struct square
 {
 char c;
@@ -20,7 +21,8 @@ int main()
 	printf("Enter the key");
 	scanf("%s",key);
 	printf("Type 'y' to print the square, anything else to continue without displaying\n");
-	scanf("\n%c",&choice);
+	__fpurge(stdin);
+	scanf("%c",&choice);
 	square(s1,key,choice);
 	printf("Enter text to be encrypted");
         scanf("%s",input);
